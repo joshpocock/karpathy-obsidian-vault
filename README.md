@@ -2,7 +2,7 @@
 
 A ready-to-use Obsidian vault template for the LLM-maintained wiki pattern Andrej Karpathy described. Based on his tweet and gist. Walks with any Claude Code session from day one.
 
-Full walkthrough: [Stride video #0006]
+Full walkthrough: [Stride video #0006](https://youtu.be/VUnABqzrZQg)
 
 ## What you get
 
@@ -48,7 +48,7 @@ If the wiki ever feels slow or the model starts missing relevant articles, run `
 
 ## Credit
 
-The pattern is Andrej Karpathy's. This template is Stride's implementation of it with every rule spelled out in `CLAUDE.md` so the model behaves consistently across sessions. Full walkthrough video: [link]
+The pattern is Andrej Karpathy's. This template is Stride's implementation of it with every rule spelled out in `CLAUDE.md` so the model behaves consistently across sessions. Full walkthrough video: [Stride video #0006](https://youtu.be/VUnABqzrZQg)
 
 ## Support
 
