@@ -26,9 +26,10 @@ That is it. You now have a working LLM-maintained wiki.
 
 ## Recommended Obsidian plugins (optional)
 
-- **Obsidian Web Clipper** - browser extension that converts web articles to markdown in one click. Configure it to drop notes into `raw/`.
-- **Local Images Plus** - community plugin that downloads referenced images into the vault so the model can reference them locally.
-- **Dataview** - if you want dynamic tables and queries over wiki frontmatter.
+- **[Obsidian Web Clipper](https://obsidian.md/clipper)** - browser extension that converts web articles to markdown in one click. Configure it to drop notes into `raw/`.
+- **[Local Images Plus](https://github.com/Sergei-Korneev/obsidian-local-images-plus)** - community plugin that downloads referenced images into the vault so the model can reference them locally.
+- **[Dataview](https://blacksmithgu.github.io/obsidian-dataview/)** - if you want dynamic tables and queries over wiki frontmatter.
+- **[qmd](https://github.com/tobi/qmd)** - command-line tool that converts web pages to clean markdown.
 
 ## Daily use
 
