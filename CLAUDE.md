@@ -7,7 +7,8 @@ Read this file at the start of every session. Follow the rules below for every o
 ## Layers
 
 - `raw/` is the inbox. The human drops source material here (articles, papers, transcripts, pasted notes, images). You read from `raw/`. You never write to `raw/`. Raw files are immutable.
-- `wiki/` is your workspace. You write summaries, entity pages, concept pages, topic indexes, and the master index here. Everything in `wiki/` is organized by topic folder.
+- `ai-research/` is your research folder. When you conduct autonomous web research, save the full cleaned source content here as markdown files. You CAN write to this folder. Files here are immutable once saved (do not overwrite, create new files). This separates human-curated sources (`raw/`) from AI-discovered sources (`ai-research/`).
+- `wiki/` is your workspace. You write summaries, entity pages, concept pages, topic indexes, and the master index here. Everything in `wiki/` is organized by topic folder. You compile from BOTH `raw/` and `ai-research/` into `wiki/`.
 - `output/` is for query results, reports, slide decks, and generated artifacts that are not part of the permanent wiki. You promote valuable outputs into `wiki/` as new articles when the human asks.
 - `CLAUDE.md` (this file) is the schema. It defines every operation you perform. Co-evolve it with the human over time.
 
@@ -39,6 +40,28 @@ For each new raw file:
 10. If the source spans multiple topics, create articles in both topics and cross-link them.
 
 One raw file typically touches 10 to 15 wiki files in a single ingest pass. That is expected. Do all the updates in one run.
+
+### Research
+
+Triggered when the human asks you to research a topic, or when a query reveals gaps the wiki cannot answer from existing sources.
+
+1. Search the web for relevant, high-quality sources on the topic.
+2. For each source found, save the full cleaned content (not a summary) as a markdown file in `ai-research/`. Use the format:
+   ```
+   ---
+   url: https://example.com/article
+   fetched: YYYY-MM-DD
+   summary: One-line description of what this source covers
+   ---
+
+   [Full article content in markdown]
+   ```
+3. File names should be descriptive and lowercase hyphenated: `ai-research/llm-context-window-limits.md`.
+4. Do NOT overwrite existing files in `ai-research/`. Always create new files.
+5. After saving the sources, run the standard Ingest procedure on each one (same steps as above, treating `ai-research/` files the same as `raw/` files).
+6. In the wiki article's `**Source:**` line, use the `ai-research/` path so it is clear the source was AI-discovered, not human-curated.
+
+The human can review `ai-research/` at any time to see what you found. These files are immutable once saved.
 
 ### Query
 
@@ -105,7 +128,8 @@ Ask a clarifying question. Do not silently invent a new operation. If the answer
 vault/
 ├── CLAUDE.md                    (this file)
 ├── README.md                    (human setup guide)
-├── raw/                         (immutable sources)
+├── raw/                         (human-curated sources, immutable)
+├── ai-research/                 (AI-discovered sources, immutable once saved)
 ├── wiki/
 │   ├── _master-index.md         (catalog of all topics)
 │   ├── log.md                   (append-only operation log)
