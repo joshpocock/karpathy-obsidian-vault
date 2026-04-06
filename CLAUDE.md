@@ -46,7 +46,7 @@ One raw file typically touches 10 to 15 wiki files in a single ingest pass. That
 Triggered when the human asks you to research a topic, or when a query reveals gaps the wiki cannot answer from existing sources.
 
 1. Search the web for relevant, high-quality sources on the topic.
-2. For each source found, save the full cleaned content (not a summary) as a markdown file in `ai-research/`. Use the format:
+2. **One source, one file.** For EACH URL or source you find, save it as its OWN separate markdown file in `ai-research/`. Do NOT combine multiple sources into one file. If you found 4 URLs, that is 4 files. Use this format for each:
    ```
    ---
    url: https://example.com/article
@@ -54,12 +54,13 @@ Triggered when the human asks you to research a topic, or when a query reveals g
    summary: One-line description of what this source covers
    ---
 
-   [Full article content in markdown]
+   [Full article content in markdown, cleaned, not summarized]
    ```
-3. File names should be descriptive and lowercase hyphenated: `ai-research/llm-context-window-limits.md`.
-4. Do NOT overwrite existing files in `ai-research/`. Always create new files.
-5. After saving the sources, run the standard Ingest procedure on each one (same steps as above, treating `ai-research/` files the same as `raw/` files).
-6. In the wiki article's `**Source:**` line, use the `ai-research/` path so it is clear the source was AI-discovered, not human-curated.
+3. File names should be descriptive and lowercase hyphenated: `ai-research/qmd-github-readme.md`, `ai-research/qmd-hackernews-discussion.md`.
+4. Save the FULL cleaned content from each source, not a summary. The wiki article is where summarization happens, not here. These files are the source of truth for citation verification.
+5. Do NOT overwrite existing files in `ai-research/`. Always create new files.
+6. After saving ALL sources, run the standard Ingest procedure to compile them into `wiki/`. A single wiki article can cite multiple `ai-research/` files in its `**Source:**` line.
+7. In the wiki article's `**Source:**` line, list every `ai-research/` file used so the lint pass can verify each claim back to its original source.
 
 The human can review `ai-research/` at any time to see what you found. These files are immutable once saved.
 
